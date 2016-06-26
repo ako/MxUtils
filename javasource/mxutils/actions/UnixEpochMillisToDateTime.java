@@ -11,15 +11,16 @@ package mxutils.actions;
 
 import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.webui.CustomJavaAction;
+import java.util.Date;
 
 /**
  * Convert unix epoch timestamp to DateTime
  */
-public class UnixEpochToDateTime extends CustomJavaAction<java.util.Date>
+public class UnixEpochMillisToDateTime extends CustomJavaAction<java.util.Date>
 {
 	private Long UnixEpoch;
 
-	public UnixEpochToDateTime(IContext context, Long UnixEpoch)
+	public UnixEpochMillisToDateTime(IContext context, Long UnixEpoch)
 	{
 		super(context);
 		this.UnixEpoch = UnixEpoch;
@@ -29,7 +30,8 @@ public class UnixEpochToDateTime extends CustomJavaAction<java.util.Date>
 	public java.util.Date executeAction() throws Exception
 	{
 		// BEGIN USER CODE
-		throw new com.mendix.systemwideinterfaces.MendixRuntimeException("Java action was not implemented");
+		Date date = new Date(this.UnixEpoch);
+		return date;
 		// END USER CODE
 	}
 
@@ -39,7 +41,7 @@ public class UnixEpochToDateTime extends CustomJavaAction<java.util.Date>
 	@Override
 	public String toString()
 	{
-		return "UnixEpochToDateTime";
+		return "UnixEpochMillisToDateTime";
 	}
 
 	// BEGIN EXTRA CODE

@@ -44,7 +44,8 @@ public class UserActionsRegistrar implements EventHandler
 			component.actionRegistry().registerUserAction(mxutils.actions.OQLChartDataset.class);
 			component.actionRegistry().registerUserAction(mxutils.actions.OQLChartDatasetJson.class);
 			component.actionRegistry().registerUserAction(mxutils.actions.OQLChartDatasetMapping.class);
-			component.actionRegistry().registerUserAction(mxutils.actions.UnixEpochToDateTime.class);
+			component.actionRegistry().registerUserAction(mxutils.actions.UnixEpochMillisToDateTime.class);
+			component.actionRegistry().registerUserAction(mxutils.actions.UnixEpochSecondsToDateTime.class);
 			component.actionRegistry().registerUserAction(system.actions.VerifyPassword.class);
 		}
 	}

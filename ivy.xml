@@ -1,5 +1,5 @@
 <ivy-module version="2.0">
-    <info organisation="com.mendix" module="mxiotsensors"/>
+    <info organisation="com.mendix" module="mxutils"/>
     <configurations defaultconfmapping="default">
         <conf name="default" description="run in modeler" extends="export"/>
         <conf name="export" description="connector export dependencies only"/>

@@ -26,4 +26,16 @@ public class Microflows
 			throw new MendixRuntimeException(e);
 		}
 	}
+	public static void testUnixEpochToDateTime(IContext context)
+	{
+		try
+		{
+			Map<String, Object> params = new HashMap<String, Object>();
+			Core.execute(context, "Main.TestUnixEpochToDateTime", params);
+		}
+		catch (CoreException e)
+		{
+			throw new MendixRuntimeException(e);
+		}
+	}
 }
