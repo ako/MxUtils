@@ -1,0 +1,8 @@
+.idea
+userlib/*
+*.iml
+*.launch
+deployment
+*.bak
+*.lock
+resources/certs/*
