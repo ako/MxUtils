@@ -57,8 +57,18 @@ The result will be returned in the following data structure:
 
  ![Chartjs datastructure][1]
 
+Usage in a microflow:
+
+ ![Microflow using OQL to entity][2]
+
+Confguration of the OQL action:
+
+ ![OQL to entity configuration][3]
+
 ## Conversions
 
 * Convert Long containing unix epoch to DateTime.
 
  [1]: docs/images/chartjs-datastructure.png
+ [2]: docs/images/chartjs-microflow.png
+ [3]: docs/images/configure-oql-to-entity.png
