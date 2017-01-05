@@ -25,7 +25,7 @@ Then the filedocument is copied to s3.
 
  ![Determine labels for objects in image][1]
  
- * Detect Faces - detect faces in image on s3
+* Detect Faces - detect faces in image on s3
  
  ![Determine face details and emotions for people in image][2]
  
@@ -36,7 +36,7 @@ Then the filedocument is copied to s3.
  ![Mustache markdown template][6]
  
  [1]: docs/images/mf_aws_rekognition_labels_image.png
- [2]: docs/images/mf_aws_rekognition_detect_faces.png
+ [2]: docs/images/mf_aws_rekognition_detect_faces.PNG
  [3]: docs/images/mf_copy_file_document_to_s3.png
  [4]: docs/images/mf_generate_long_series.png
  [5]: docs/images/mf_generate_every_4_weeks_series.png
