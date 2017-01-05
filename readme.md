@@ -1,14 +1,14 @@
 # Mendix Utils Microflow actions
 
-## Date time conversions
-
-* Convert Long containing unix epoch to DateTime.
-
 ## Lists
 
 * Generate List of Longs
 
+ ![Generate long series][4]
+
 * Generate list of Dates
+
+ ![Generate every four weeks series][5]
 
 ## AWS S3
 
@@ -31,8 +31,13 @@ Then the filedocument is copied to s3.
  
 ## Mustache
 
-* Templating engine
+* Templating engine with support for markdown:
 
+ ![Mustache markdown template][6]
+ 
  [1]: docs/images/mf_aws_rekognition_labels_image.png
  [2]: docs/images/mf_aws_rekognition_detect_faces.png
  [3]: docs/images/mf_copy_file_document_to_s3.png
+ [4]: docs/images/mf_generate_long_series.png
+ [5]: docs/images/mf_generate_every_4_weeks_series.png
+ [6]: docs/images/mf_mustache_markdown_template.png
