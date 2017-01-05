@@ -5,4 +5,5 @@ userlib/*
 deployment
 *.bak
 *.lock
+DIST/*
 resources/certs/*
