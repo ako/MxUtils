@@ -6,6 +6,9 @@
         <conf name="export-mustache" description="connector export dependencies only"/>
         <conf name="export-awss3" description="connector export dependencies only"/>
         <conf name="export-awsrekognition" description="connector export dependencies only"/>
+        <conf name="export-nlp" description="connector export dependencies only"/>
+        <conf name="export-mixpanel" description="connector export dependencies only"/>
+        <conf name="export-google-analytics" description="connector export dependencies only"/>
     </configurations>
     <dependencies>
         <!-- Mx Mustache -->
@@ -16,11 +19,31 @@
         <dependency org="com.samskivert"  name="jmustache" rev="1.14-SNAPSHOT" conf="export-mustache->default"/>
 
         <!-- Aws S3 -->
-        <dependency org="com.amazonaws" name="aws-java-sdk-s3" rev="1.11.75"  conf="export-awss3->default"/>
+        <dependency org="com.amazonaws" name="aws-java-sdk-s3" rev="1.11.88"  conf="export-awss3->default"/>
         <dependency org="commons-io" name="commons-io" rev="2.5"  conf="export-awss3->default"/>
 
         <!-- Aws Rekognition -->
-        <dependency org="com.amazonaws" name="aws-java-sdk-rekognition" rev="1.11.75"  conf="export-awsrekognition->default"/>
+        <dependency org="com.amazonaws" name="aws-java-sdk-rekognition" rev="1.11.88"  conf="export-awsrekognition->default"/>
+
+        <!-- MxNlp -->
+
+        <dependency org="org.datavec" name="datavec-api" rev="0.7.2"  conf="export-nlp->default"/>
+        <dependency org="org.deeplearning4j" name="deeplearning4j-core" rev="0.7.2"  conf="export-nlp->default"/>
+        <dependency org="org.deeplearning4j" name="deeplearning4j-ui_2.11" rev="0.7.2"  conf="export-nlp->default"/>
+        <dependency org="org.nd4j" name="canova-nd4j-nlp" rev="0.0.0.17" conf="export-nlp->default"/>
+        <dependency org="org.nd4j" name="nd4j-native-platform" rev="0.7.2" conf="export-nlp->default"/>
+
+<!--
+        <dependency org="org.nd4j" name="nd4j-native" rev="0.7.2" conf="export-nlp->default"/>
+        <dependency org="org.nd4j" name="canova-api" rev="0.0.0.17" conf="export-nlp->default"/>
+        <dependency org="org.deeplearning4j" name="deeplearning4j-nlp" rev="0.7.2" conf="export-nlp->default"/>
+-->
+
+        <!-- MIx Panel -->
+        <dependency org="com.mixpanel" name="mixpanel-java" rev="1.4.4"  conf="export-mixpanel->default"/>
+
+        <!-- Google Analytics -->
+        <dependency org="com.squareup.okhttp3" name="okhttp" rev="3.5.0"  conf="export-google-analytics->default"/>
 
         <!-- for testing -->
         <dependency org="ca.szc.configparser" name="java-configparser" rev="0.2"/>
@@ -40,5 +63,7 @@
         <dependency org="org.owasp.antisamy" name="antisamy" rev="1.5.3"/>
         <dependency org="com.google.guava" name="guava" rev="20.0"/>
 
+        <override org="org.apache.httpcomponents" module="httpclient" rev="4.5.2" />
+        <override org="org.apache.httpcomponents" module="httpcore" rev="4.4.6" />
     </dependencies>
 </ivy-module>

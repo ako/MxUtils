@@ -9,16 +9,11 @@
 
 package mxawsrekognition.actions;
 
-import com.amazonaws.auth.AWSCredentials;
-import com.amazonaws.auth.BasicAWSCredentials;
-import com.amazonaws.regions.Region;
-import com.amazonaws.regions.Regions;
-import com.amazonaws.services.rekognition.AmazonRekognitionClient;
-import com.amazonaws.services.rekognition.model.*;
 import com.mendix.core.Core;
 import com.mendix.logging.ILogNode;
 import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.webui.CustomJavaAction;
+import mxawsrekognition.AwsRekognitionConnector;
 
 public class DetectFaces extends CustomJavaAction<java.lang.String>
 {
@@ -44,56 +39,9 @@ public class DetectFaces extends CustomJavaAction<java.lang.String>
 		// BEGIN USER CODE
         logger.info(String.format("executeAction - bucket: %s, key: %s, region: %s", this.Bucket, this.Key, this.AwsRegion));
 
-        String labels = "";
-        AWSCredentials credentials = new BasicAWSCredentials(AwsAccessKeyId, AwsSecretAccessKey);
-        DetectFacesRequest request = new DetectFacesRequest()
-                .withImage(new Image().withS3Object(new S3Object().withName(this.Key).withBucket(this.Bucket)))
-                .withAttributes(Attribute.ALL);
-
-        AmazonRekognitionClient rekognitionClient = new AmazonRekognitionClient(credentials)
-                .withRegion(Region.getRegion(Regions.fromName(this.AwsRegion)));
-
-        DetectFacesResult result = rekognitionClient.detectFaces(request);
-        logger.info(String.format("detect faces result: %s, %s", result.getFaceDetails(), result.toString()));
-        String jsonResult = "";
-        for (FaceDetail faceDetail : result.getFaceDetails()) {
-            jsonResult += "{\"faceDetails\":{\"details\":[";
-            if (faceDetail.getBeard() != null) {
-                jsonResult += faceDetailJson("Beard", faceDetail.getBeard().getValue(), faceDetail.getBeard().getConfidence());
-            }
-            if (faceDetail.getGender() != null) {
-                jsonResult += ","+  faceDetailJson("Gender", faceDetail.getGender().getValue(), faceDetail.getGender().getConfidence());
-            }
-            if (faceDetail.getMustache() != null) {
-                jsonResult += ","+ faceDetailJson("Mustache", faceDetail.getMustache().getValue(), faceDetail.getMustache().getConfidence());
-            }
-            if (faceDetail.getEyeglasses() != null) {
-                jsonResult += ","+ faceDetailJson("Eyeglasses", faceDetail.getEyeglasses().getValue(), faceDetail.getEyeglasses().getConfidence());
-            }
-            if (faceDetail.getMouthOpen() != null) {
-                jsonResult += ","+ faceDetailJson("MounthOpen", faceDetail.getMouthOpen().getValue(), faceDetail.getMouthOpen().getConfidence());
-            }
-            if (faceDetail.getEyesOpen() != null) {
-                jsonResult += ","+ faceDetailJson("EyesOpen", faceDetail.getEyesOpen().getValue(), faceDetail.getEyesOpen().getConfidence());
-            }
-            if (faceDetail.getSmile() != null) {
-                jsonResult += ","+ faceDetailJson("Smile", faceDetail.getSmile().getValue(), faceDetail.getSmile().getConfidence());
-            }
-            if (faceDetail.getSunglasses() != null) {
-                jsonResult += ","+ faceDetailJson("Sunglasses", faceDetail.getSunglasses().getValue(), faceDetail.getSunglasses().getConfidence());
-            }
-            jsonResult += "],\"Emotions\":[";
-            if (faceDetail.getEmotions() != null) {
-                for (Emotion emotion : faceDetail.getEmotions()) {
-                    jsonResult += String.format("{\"Emotion\":\"%s\",\"Confidence\":\"%f\"},",emotion.getType(),emotion.getConfidence());
-                }
-            }
-            jsonResult = jsonResult.substring(0,jsonResult.length() - 1) ;
-            jsonResult += "]";
-
-            jsonResult += "}},";
-        }
-        jsonResult = "[" + (jsonResult.equals("") ? "" : jsonResult.substring(0,jsonResult.length() - 1)) + "]";
+        AwsRekognitionConnector conn = new AwsRekognitionConnector();
+        conn.setLogger(logger);
+        String jsonResult = conn.detectFaces(AwsAccessKeyId, AwsSecretAccessKey, this.Key, this.Bucket, this.AwsRegion);
         logger.info("DetectFaces result: " + jsonResult);
         return jsonResult;
 		// END USER CODE
@@ -110,9 +58,5 @@ public class DetectFaces extends CustomJavaAction<java.lang.String>
 
 	// BEGIN EXTRA CODE
     private final ILogNode logger = Core.getLogger("AwsRekognition");
-
-    private String faceDetailJson(String detailName, Object detailValue, Float confidence) {
-        return String.format("{\"Detail\":\"%s\", \"Value\":\"%s\", \"Confidence\":\"%f\" }", detailName, detailValue, confidence );
-    }
 	// END EXTRA CODE
 }

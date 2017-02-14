@@ -19,6 +19,7 @@ import com.mendix.core.Core;
 import com.mendix.logging.ILogNode;
 import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.webui.CustomJavaAction;
+import mxawsrekognition.AwsRekognitionConnector;
 
 public class GetLabelsForImage extends CustomJavaAction<java.lang.String>
 {
@@ -43,25 +44,9 @@ public class GetLabelsForImage extends CustomJavaAction<java.lang.String>
 	{
 		// BEGIN USER CODE
 		logger.info(String.format("executeAction - bucket: %s, key: %s, region: %s", this.Bucket, this.Key, this.AwsRegion));
-
-		String labels = "";
-        AWSCredentials credentials = new BasicAWSCredentials(AwsAccessKeyId, AwsSecretAccessKey);
-        DetectLabelsRequest request = new DetectLabelsRequest()
-                .withImage(new Image().withS3Object(new S3Object().withName(this.Key).withBucket(this.Bucket)))
-                .withMaxLabels(10)
-                .withMinConfidence(80F);
-
-        AmazonRekognitionClient rekognitionClient = new AmazonRekognitionClient(credentials)
-                .withRegion(Region.getRegion(Regions.fromName(this.AwsRegion)));
-
-        DetectLabelsResult result = rekognitionClient.detectLabels(request);
-        logger.info(String.format("detect labels result: %s, %s", result.getLabels().toString(),result.toString()));
-        for (Label label : result.getLabels()) {
-            logger.info(label.getName() + " : " + label.getConfidence());
-            labels += "{\"label\":\"" + label.getName() + "\"," +
-					  "\"confidence\":\"" + label.getConfidence() + "\"},";
-        }
-		labels = "[" + (labels.equals("") ? "" : labels.substring(0,labels.length() - 1)) + "]";
+		AwsRekognitionConnector conn = new AwsRekognitionConnector();
+		conn.setLogger(logger);
+		String labels = conn.getImageLabels(this.AwsAccessKeyId,this.AwsSecretAccessKey, this.Key, this.Bucket, this.AwsRegion);
         return labels ;
 
 		// END USER CODE

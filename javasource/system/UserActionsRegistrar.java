@@ -98,12 +98,16 @@ public class UserActionsRegistrar
     registrator.registerUserAction(communitycommons.actions.waitForLock.class);
     registrator.registerUserAction(communitycommons.actions.XSSSanitize.class);
     registrator.registerUserAction(communitycommons.actions.YearsBetween.class);
+    registrator.registerUserAction(mixpanel.actions.SendEvent.class);
     registrator.registerUserAction(mxawsrekognition.actions.DetectFaces.class);
     registrator.registerUserAction(mxawsrekognition.actions.GetLabelsForImage.class);
     registrator.registerUserAction(mxawsrekognition.actions.IndexFaces.class);
     registrator.registerUserAction(mxawss3.actions.S3CopyFileDocumentToBucket.class);
     registrator.registerUserAction(mxdatetime.actions.UnixEpochMillisToDateTime.class);
     registrator.registerUserAction(mxdatetime.actions.UnixEpochSecondsToDateTime.class);
+    registrator.registerUserAction(mxgoogleanalytics.actions.GaTrackEvent.class);
+    registrator.registerUserAction(mxgoogleanalytics.actions.GaTrackException.class);
+    registrator.registerUserAction(mxgoogleanalytics.actions.GaTrackPageView.class);
     registrator.registerUserAction(mxlists.actions.GenerateDateTimeSeries.class);
     registrator.registerUserAction(mxlists.actions.GenerateLongSeries.class);
     registrator.registerUserAction(mxmustache.actions.FillTemplate.class);
@@ -111,6 +115,8 @@ public class UserActionsRegistrar
     registrator.registerUserAction(mxmustache.actions.FillTemplateToFileDocument.class);
     registrator.registerUserAction(mxmustache.actions.SendEmail.class);
     registrator.registerUserAction(mxmustachetests.actions.StartSmtpMock.class);
+    registrator.registerUserAction(mxnlp.actions.InitNetwork.class);
+    registrator.registerUserAction(mxnlp.actions.Predict.class);
     registrator.registerUserAction(mxscripting.actions.ExecGroovy.class);
     registrator.registerUserAction(mxscripting.actions.ExecPython.class);
     registrator.registerUserAction(mxutils.actions.SetConfigFromProperty.class);

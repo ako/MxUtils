@@ -1,0 +1,30 @@
+rekognize, recognize
+rekognize, What do you see?
+rekognize, What do you recognize?
+rekognize, What is in this picture?
+rekognize, What is in this image?
+help, What can i do?
+help, Can you help me?
+help, How do i use this
+help, I don't understand this
+help, help
+find, Do you have pictures of
+find, Show me a picture of
+find, Are there any pictures of
+find, Show me a picture of
+find, Find a picture of
+find, Find pictures of
+find, Find pictures containing
+find, Find images containing
+find, Find a picture containing
+count, How many pictures of
+count, What number of images with
+count, Are there many pictures of
+count, Count the number of images with
+who, who has used this service
+who, who has uploaded images
+who, what people have used this
+who, can you tell me who has uploaded images?
+getpage, download this page
+getpage, please get this page
+getpage, save this page
