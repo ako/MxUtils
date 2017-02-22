@@ -9,7 +9,6 @@
 
 package mxmustache.actions;
 
-import com.amazonaws.util.StringInputStream;
 import com.mendix.core.Core;
 import com.mendix.logging.ILogNode;
 import com.mendix.systemwideinterfaces.core.IContext;

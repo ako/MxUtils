@@ -10,8 +10,8 @@
 package mxmustache.actions;
 
 import com.mendix.systemwideinterfaces.core.IContext;
-import com.mendix.webui.CustomJavaAction;
 import com.mendix.systemwideinterfaces.core.IMendixObject;
+import com.mendix.webui.CustomJavaAction;
 
 public class FillTemplateFromMappingToFileDocument extends CustomJavaAction<java.lang.Boolean>
 {
@@ -38,7 +38,7 @@ public class FillTemplateFromMappingToFileDocument extends CustomJavaAction<java
 		this.DestinationFile = __DestinationFile == null ? null : system.proxies.FileDocument.initialize(getContext(), __DestinationFile);
 
 		// BEGIN USER CODE
-		throw new com.mendix.systemwideinterfaces.MendixRuntimeException("Java action was not implemented");
+        throw new com.mendix.systemwideinterfaces.MendixRuntimeException("Java action was not implemented");
 		// END USER CODE
 	}
 

@@ -21,6 +21,12 @@ public class GoogleAnalyticsConnectorTests {
         conn.trackEvent("UA-180552-6",null,"123","video","play","holiday",new Long(300));
     }
     @Test
+    public void testTrackEvent2(){
+        GoogleAnalyticsConnector conn = new GoogleAnalyticsConnector();
+        conn.setDebug(debug);
+        conn.trackEvent("UA-180552-5",null,"123","video","play","holiday",new Long(300));
+    }
+    @Test
     public void testTrackException(){
         GoogleAnalyticsConnector conn = new GoogleAnalyticsConnector();
         conn.setDebug(debug);

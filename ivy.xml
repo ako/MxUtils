@@ -5,6 +5,7 @@
         <conf name="export" description="connector export dependencies only"/>
         <conf name="export-mustache" description="connector export dependencies only"/>
         <conf name="export-awss3" description="connector export dependencies only"/>
+        <conf name="export-awslex" description="connector export dependencies only"/>
         <conf name="export-awsrekognition" description="connector export dependencies only"/>
         <conf name="export-nlp" description="connector export dependencies only"/>
         <conf name="export-mixpanel" description="connector export dependencies only"/>
@@ -25,8 +26,10 @@
         <!-- Aws Rekognition -->
         <dependency org="com.amazonaws" name="aws-java-sdk-rekognition" rev="1.11.88"  conf="export-awsrekognition->default"/>
 
-        <!-- MxNlp -->
+        <!-- Aws Lex -->
+        <dependency org="com.amazonaws" name="aws-java-sdk-lex" rev="1.11.88"  conf="export-awslex->default"/>
 
+        <!-- MxNlp -->
         <dependency org="org.datavec" name="datavec-api" rev="0.7.2"  conf="export-nlp->default"/>
         <dependency org="org.deeplearning4j" name="deeplearning4j-core" rev="0.7.2"  conf="export-nlp->default"/>
         <dependency org="org.deeplearning4j" name="deeplearning4j-ui_2.11" rev="0.7.2"  conf="export-nlp->default"/>

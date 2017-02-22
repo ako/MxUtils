@@ -70,7 +70,7 @@ public class SendEmail extends CustomJavaAction<java.lang.Boolean>
         HtmlEmail email = new HtmlEmail();
         email.setHostName(this.SmtpHost);
         email.setSmtpPort(this.SmtpPort.intValue());
-        if(!this.SmtpUsername.equals("") && !this.SmtpPassword.equals("")) {
+        if (!this.SmtpUsername.equals("") && !this.SmtpPassword.equals("")) {
             email.setAuthenticator(new DefaultAuthenticator(this.SmtpUsername, this.SmtpPassword));
         }
         email.setSSLOnConnect(this.UseSsl);
@@ -82,11 +82,11 @@ public class SendEmail extends CustomJavaAction<java.lang.Boolean>
         email.setHtmlMsg(this.Contents);
         email.setTextMsg("Your email client does not support HTML messages");
         email.addTo(this.To);
-        if(this.Attachment != null && !this.Attachment.equals("") && !this.AttachmentMimetype.equals("")) {
+        if (this.Attachment != null && !this.Attachment.equals("") && !this.AttachmentMimetype.equals("")) {
             email.addPart(this.Attachment, this.AttachmentMimetype);
         }
-        if(this.AttachmentDocument != null && !this.AttachmentMimetype.equals("")){
-            InputStream is = Core.getFileDocumentContent(getContext(),this.__AttachmentDocument);
+        if (this.AttachmentDocument != null && !this.AttachmentMimetype.equals("")) {
+            InputStream is = Core.getFileDocumentContent(getContext(), this.__AttachmentDocument);
             email.attach(new ByteArrayDataSource(is, this.AttachmentMimetype),
                     this.AttachmentFilename, this.Subject,
                     EmailAttachment.ATTACHMENT);

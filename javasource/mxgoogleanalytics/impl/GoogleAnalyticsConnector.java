@@ -27,7 +27,7 @@ public class GoogleAnalyticsConnector {
             }
             RequestBody body = RequestBody.create(MediaType.parse(ContentType), payload);
             Request request = new Request.Builder().url(gaUrl).post(body).build();
-            info(String.format("request: %s, payload%s", request, payload));
+            info(String.format("request: %s, payload: %s", request, payload));
             Response response = client.newCall(request).execute();
             info(response.body().string());
         } catch (Exception e) {
@@ -51,7 +51,7 @@ public class GoogleAnalyticsConnector {
             }
             RequestBody body = RequestBody.create(MediaType.parse(ContentType), payload);
             Request request = new Request.Builder().url(gaUrl).post(body).build();
-            info(String.format("request: %s, payload%s", request, payload));
+            info(String.format("request: %s, payload: %s", request, payload));
             Response response = client.newCall(request).execute();
             info(response.body().string());
         } catch (Exception e) {
@@ -72,7 +72,7 @@ public class GoogleAnalyticsConnector {
             }
             RequestBody body = RequestBody.create(MediaType.parse(ContentType), payload);
             Request request = new Request.Builder().url(gaUrl).post(body).build();
-            info(String.format("request: %s, payload%s", request, payload));
+            info(String.format("request: %s, payload: %s", request, payload));
             Response response = client.newCall(request).execute();
             info(response.body().string());
         } catch (Exception e) {
